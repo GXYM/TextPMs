@@ -18,7 +18,7 @@ Arbitrary Shape Text Detection in Scene Images
  *  [CTW-1500 model]() (pretrained on ICDAR2017-MLT)
  *  [MSRA-TD500 model]() (pretrained on ICDAR2017-MLT)  
 
-## 4.Running Eval
+## 4.Running Evaluation
 run:  
 ```
 sh eval.sh
