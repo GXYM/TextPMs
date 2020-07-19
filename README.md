@@ -8,7 +8,7 @@ Arbitrary Shape Text Detection in Scene Images
   GCC >=9.0;   
   NVIDIA GPU(with 10G or larger GPU memory for inference);  
 
-# 2.Dataset Links  
+## 2.Dataset Links  
 1. [CTW1500](https://drive.google.com/file/d/1A2s3FonXq4dHhD64A2NCWc8NQWMH2NFR/view?usp=sharing)   
 2. [TD500](https://drive.google.com/file/d/1ByluLnyd8-Ltjo9AC-1m7omZnI-FA1u0/view?usp=sharing)  
 3. [Total-Text](https://drive.google.com/file/d/17_7T_-2Bu3KSSg2OkXeCxj97TBsjvueC/view?usp=sharing) 
@@ -51,9 +51,9 @@ CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 
 
 ```  
 Note: Be sure to modify the test_size in [util/option.py](https://github.com/GXYM/TextPMs/blob/master/util/option.py) 
-# 5.Visualization
+## 5.Visualization
 ![Visualization ](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
-# 6.License  
+## 6.License  
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/GXYM/TextPMs/blob/master/LICENSE.md) file for details
 
 
