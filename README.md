@@ -14,9 +14,9 @@ Arbitrary Shape Text Detection in Scene Images
 3. [Total-Text](https://drive.google.com/file/d/17_7T_-2Bu3KSSg2OkXeCxj97TBsjvueC/view?usp=sharing) 
 
 ## 3.Models
- *  [Total-Text model]() pretrained on ICDAR2017-MLT.
- *  [CTW-1500 model]() pretrained on ICDAR2017-MLT.
- *  [MSRA-TD500 model]() pretrained on ICDAR2017-MLT.  
+ *  [Total-Text model]() (pretrained on ICDAR2017-MLT)
+ *  [CTW-1500 model]() (pretrained on ICDAR2017-MLT)
+ *  [MSRA-TD500 model]() (pretrained on ICDAR2017-MLT)  
 
 ## 4.Running Eval
 run:  
@@ -50,7 +50,7 @@ CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 
 #CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name TD500 --checkepoch 125 --threshold 0.305 --min_area 150  --voting true --gpu 0
 
 ```  
-Note: you should modify the test_size in [util/option.py](https://github.com/GXYM/TextPMs/blob/master/util/option.py)
+Note: Be sure to modify the test_size in [util/option.py](https://github.com/GXYM/TextPMs/blob/master/util/option.py) 
 # 5.Visualization
 ![Visualization ](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
 # 6.License  
