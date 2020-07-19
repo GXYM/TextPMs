@@ -1,12 +1,12 @@
 # TextPMs
 Arbitrary Shape Text Detection in Scene Images  
 ## 1.Prerequisites  
-  python 3.7**;  
-  PyTorch 1.2.0**;   
-  Numpy >=1.16**;   
-  CUDA 10.2**;  
-  GCC >=9.0**;   
-  NVIDIA GPU(with 10G or larger GPU memory for inference)**;  
+  python 3.7;  
+  PyTorch 1.2.0;   
+  Numpy >=1.16;   
+  CUDA 10.2;  
+  GCC >=9.0;   
+  NVIDIA GPU(with 10G or larger GPU memory for inference);  
 
 # 2.Dataset Links  
 1. [CTW1500](https://drive.google.com/file/d/1A2s3FonXq4dHhD64A2NCWc8NQWMH2NFR/view?usp=sharing)   
