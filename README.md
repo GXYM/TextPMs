@@ -14,9 +14,9 @@ Arbitrary Shape Text Detection in Scene Images
 3. [Total-Text](https://drive.google.com/file/d/17_7T_-2Bu3KSSg2OkXeCxj97TBsjvueC/view?usp=sharing) 
 
 ## 3.Models
- *  [Total-Text model](https://drive.google.com/open?id=1cyAW7X4LESCJV6pEcSWw3BnXOnZSSPPC) pretrained on ICDAR2017-MLT.
- *  [CTW-1500 model](https://drive.google.com/open?id=1cyAW7X4LESCJV6pEcSWw3BnXOnZSSPPC) pretrained on ICDAR2017-MLT.
- *  [MSRA-TD500 model](https://drive.google.com/open?id=1WKFJsotug9qeuMxqnmgBbMPDR6CaujsM) pretrained on ICDAR2017-MLT.  
+ *  [Total-Text model]() pretrained on ICDAR2017-MLT.
+ *  [CTW-1500 model]() pretrained on ICDAR2017-MLT.
+ *  [MSRA-TD500 model]() pretrained on ICDAR2017-MLT.  
 
 ## 4.Running Eval
 run:  
