@@ -6,15 +6,54 @@ Arbitrary Shape Text Detection in Scene Images
 **Numpy >=1.16**;   
 **CUDA 10.2**;  
 **GCC >=9.0**;   
-**NVIDIA GPU(with 10G or larger GPU memory for inference)**;   
-## 2.Models
- *   [Total-Text model](https://drive.google.com/open?id=1cyAW7X4LESCJV6pEcSWw3BnXOnZSSPPC) pretrained on ICDAR2017-MLT.
+**NVIDIA GPU(with 10G or larger GPU memory for inference)**;  
+
+# 2.Dataset Links  
+1. [CTW1500](https://drive.google.com/file/d/1A2s3FonXq4dHhD64A2NCWc8NQWMH2NFR/view?usp=sharing)   
+2. [TD500](https://drive.google.com/file/d/1ByluLnyd8-Ltjo9AC-1m7omZnI-FA1u0/view?usp=sharing)  
+3. [Total-Text](https://drive.google.com/file/d/17_7T_-2Bu3KSSg2OkXeCxj97TBsjvueC/view?usp=sharing) 
+
+## 3.Models
+ *  [Total-Text model](https://drive.google.com/open?id=1cyAW7X4LESCJV6pEcSWw3BnXOnZSSPPC) pretrained on ICDAR2017-MLT.
  *  [CTW-1500 model](https://drive.google.com/open?id=1cyAW7X4LESCJV6pEcSWw3BnXOnZSSPPC) pretrained on ICDAR2017-MLT.
  *  [MSRA-TD500 model](https://drive.google.com/open?id=1WKFJsotug9qeuMxqnmgBbMPDR6CaujsM) pretrained on ICDAR2017-MLT.  
 
-## 3.Running Eval
-* **Preparation**  
-2. put your test images in "data/TD500/Test" or data/ctw1500/test/text_image
-3. put the pretrained model into ["model/TD500/"](https://github.com/anoycode22/DRRG/tree/master/model/TD500) or ["model/Ctw1500"](https://github.com/anoycode22/DRRG/tree/master/model/Ctw1500)
-4. cd ./csrc and make
-5. cd ./nmslib/lanms and make
+## 4.Running Eval
+run:  
+```
+sh eval.sh
+```
+The details in a are as follows:  
+```
+#!/bin/bash
+
+##################### Total-Text ###################################
+# threshold=0.3, score_i=0.65; test_size=(256,1024)--util/option
+CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 --threshold 0.3 --score_i 0.65 --min_area 300 --voting false --gpu 0
+
+# threshold=0.325; test_size=(256,1024)
+#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 --threshold 0.325 --min_area 300 --voting true --gpu 0
+
+###################### CTW-1500 ####################################
+# threshold=0.3, score_i=0.65;test_size=(512,1024)--util/option
+#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Ctw1500 --checkepoch 480 --threshold 0.3 --score_i 0.65 --min_area 300 --voting false --gpu 0
+
+# threshold=0.365;test_size=(512,102I4)--util/option
+#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Ctw1500 --checkepoch 480 --threshold 0.365 --min_area 300  --voting  true --gpu 0
+
+
+#################### MSRA-TD500 ######################################
+# threshold=0.305, score_i=0.8; test_size=(0,832)--util/option
+#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name TD500 --checkepoch 125 --threshold 0.305 --score_i 0.8 --min_area 150  --voting false --gpu 0
+
+# threshold=0.305; test_size=(0,832)--util/option
+#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name TD500 --checkepoch 125 --threshold 0.305 --min_area 150  --voting true --gpu 0
+
+```  
+Note: you should modify the test_size in [util/option.py](https://github.com/GXYM/TextPMs/blob/master/util/option.py)
+# 5.Visualization
+![](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
+# 6.License  
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/GXYM/TextPMs/blob/master/LICENSE.md) file for details
+
+
