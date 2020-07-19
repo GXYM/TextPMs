@@ -52,7 +52,7 @@ CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 
 ```  
 Note: you should modify the test_size in [util/option.py](https://github.com/GXYM/TextPMs/blob/master/util/option.py)
 # 5.Visualization
-![](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
+![Visualization ](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
 # 6.License  
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/GXYM/TextPMs/blob/master/LICENSE.md) file for details
 
