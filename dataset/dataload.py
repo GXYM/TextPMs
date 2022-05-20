@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image
 from scipy import ndimage as ndimg
 from util.config import config as cfg
+from util.misc import find_bottom, find_long_edges, split_edge_seqence, norm2, split_edge_seqence_by_step
 import math
 
 
@@ -40,7 +41,35 @@ class TextInstance(object):
             self.points = np.array([point for i, point in enumerate(points) if i not in remove_points])
         else:
             self.points = np.array(points)
-    
+
+    def find_bottom_and_sideline(self):
+        self.bottoms = find_bottom(self.points)  # find two bottoms of this Text
+        self.e1, self.e2 = find_long_edges(self.points, self.bottoms)  # find two long edge sequence
+
+    def disk_cover(self, n_disk=15):
+        """
+        cover text region with several disks
+        :param n_disk: number of disks
+        :return:
+        """
+        inner_points1 = split_edge_seqence(self.points, self.e1, n_disk)
+        inner_points2 = split_edge_seqence(self.points, self.e2, n_disk)
+        inner_points2 = inner_points2[::-1]  # innverse one of long edge
+
+        center_points = (inner_points1 + inner_points2) / 2  # disk center
+        radii = norm2(inner_points1 - center_points, axis=1)  # disk radius
+
+        return inner_points1, inner_points2, center_points, radii
+
+    def Equal_width_bbox_cover(self, step=16.0):
+
+        inner_points1, inner_points2 = split_edge_seqence_by_step(self.points, self.e1, self.e2, step=step)
+        inner_points2 = inner_points2[::-1]  # innverse one of long edge
+
+        center_points = (inner_points1 + inner_points2) / 2  # disk center
+
+        return inner_points1, inner_points2, center_points
+
     def __repr__(self):
         return str(self.__dict__)
 

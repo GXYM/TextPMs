@@ -23,12 +23,18 @@ config.lr = 1e-4
 # using GPU
 config.cuda = True
 
+config.k_at_hop1 = 10
+
 config.output_dir = 'output'
 
 config.input_size = 640
 
 # max polygon per image
 config.max_annotation = 200
+
+# max polygon per image
+# synText, total-text:600; CTW1500: 1200; icdar: ; MLT: ; TD500: .
+config.max_roi = 600
 
 # max point per polygon
 config.max_points = 20
@@ -46,13 +52,10 @@ config.fuc_k = [1,4,7,11]
 config.threshold = 0.3
 
 # min kernal area size (default: 5)
-config.min_area = 150
+config.min_area = 10
 
 # min confidence value
 config.score_i = 0.8
-
-# select the filtering algorithm
-config.voting = False
 
 
 def update_config(config, extra_config):

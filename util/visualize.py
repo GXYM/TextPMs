@@ -54,8 +54,7 @@ def visualize_detection(image, contours, tr=None):
         tr_map = cav.heatmap(np.array(tr / np.max(tr) * 255, dtype=np.uint8))
         h,w = tr_map.shape[:2]
         tr_map = cv2.resize(tr_map, (w*cfg.scale, h*cfg.scale))
-        #print(tr_map.shape)
-        #print(image_show.shape)
+
         image_show = np.concatenate([image_show, np.array(tr_map*255, dtype=np.uint8)], axis=1)
         return image_show
     else:

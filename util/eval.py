@@ -27,7 +27,8 @@ def analysize_result(source_dir, fid_path, outpt_dir, name):
             recall = float(line_items[4].split('=')[-1])
             if id != "ALL" and (precision < 0.5 or recall < 0.5):
                 img_path = os.path.join(source_dir, line_items[0].replace(".txt", ".jpg"))
-                os.system('cp {} {}'.format(img_path, outpt_dir))
+                if os.path.exists(img_path):
+                    os.system('cp {} {}'.format(img_path, outpt_dir))
                 sel_list.append((int(id.replace(".txt", "").replace("img", "").replace("_", "")), line))
             if id == "ALL":
                 all_eval.write("{} {} {}\n".format(
@@ -171,7 +172,6 @@ def data_transfer_ICDAR(contours):
         cnts.append(points)
     return cnts
 
-
 def data_transfer_TD500(contours, res_file, img=None):
     with open(res_file, 'w') as f:
         for cont in contours:
@@ -213,8 +213,8 @@ def data_transfer_MLT2017(contours, res_file):
     with open(res_file, 'w') as f:
         for cont in contours:
             rect = cv2.minAreaRect(cont)
-            if min(rect[1][0], rect[1][1]) <= 8:
-                continue
+            # if min(rect[1][0], rect[1][1]) <= 8:
+            #     continue
             points = cv2.boxPoints(rect)
             points = np.int0(points)
             p = np.reshape(points, -1)

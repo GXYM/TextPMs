@@ -54,15 +54,15 @@ class RRGN(nn.Module):
 
 class FPN(nn.Module):
 
-    def __init__(self, backbone='vgg_bn'):
+    def __init__(self, backbone='vgg_bn', pre_train=True):
         super().__init__()
         self.backbone_name = backbone
 
         if backbone == "vgg" or backbone == 'vgg_bn':
             if backbone == 'vgg_bn':
-                self.backbone = VggNet(name="vgg16_bn", pretrain=True)
+                self.backbone = VggNet(name="vgg16_bn", pretrain=pre_train)
             elif backbone == 'vgg':
-                self.backbone = VggNet(name="vgg16", pretrain=True)
+                self.backbone = VggNet(name="vgg16", pretrain=pre_train)
 
             self.deconv5 = nn.ConvTranspose2d(512, 256, kernel_size=4, stride=2, padding=1)
             self.merge4 = UpBlok(512 + 256, 128)
@@ -72,9 +72,9 @@ class FPN(nn.Module):
 
         elif backbone == 'resnet50' or backbone == 'resnet101':
             if backbone == 'resnet101':
-                self.backbone = ResNet(name="resnet101", pretrain=True)
+                self.backbone = ResNet(name="resnet101", pretrain=pre_train)
             elif backbone == 'resnet50':
-                self.backbone = ResNet(name="resnet50", pretrain=True)
+                self.backbone = ResNet(name="resnet50", pretrain=pre_train)
 
             self.deconv5 = nn.ConvTranspose2d(2048, 256, kernel_size=4, stride=2, padding=1)
             self.merge4 = UpBlok(1024 + 256, 128)
@@ -109,7 +109,7 @@ class TextNet(nn.Module):
         super().__init__()
         self.is_training = is_training
         self.backbone_name = backbone
-        self.fpn = FPN(self.backbone_name)
+        self.fpn = FPN(self.backbone_name, pre_train=is_training)
         self.rrgn = RRGN(16)
 
     def load_model(self, model_path):
@@ -118,11 +118,11 @@ class TextNet(nn.Module):
         self.load_state_dict(state_dict['model'])
 
     def forward(self, x):
-        t0 = time.time()
+        end = time.time()
         up1, up2, up3, up4, up5 = self.fpn(x)
-        b_time = time.time()-t0
-        t1 = time.time()
+        b_time = time.time()-end
+        end = time.time()
         predict_out = self.rrgn(up1)
-        IM_time = time.time()-t1
+        iter_time = time.time()-end
         
-        return predict_out, b_time, IM_time
+        return predict_out, b_time, iter_time

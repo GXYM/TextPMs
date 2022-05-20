@@ -23,7 +23,7 @@ class ResNet(nn.Module):
 
         if pretrain:
             print("load the {} weight from ./cache".format(name))
-            base_net.load_state_dict(model_zoo.load_url(model_urls["resnet50"], model_dir="../cache"))
+            base_net.load_state_dict(model_zoo.load_url(model_urls["resnet50"], model_dir="./cache"))
         # print(base_net)
         self.stage1 = nn.Sequential(
             base_net.conv1,

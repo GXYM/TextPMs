@@ -27,10 +27,10 @@ class BaseOptions(object):
         self.parser = argparse.ArgumentParser()
 
         # basic opts
-        self.parser.add_argument('--exp_name', default="TD500", type=str,
+        self.parser.add_argument('--exp_name', default="Icdar2015", type=str,
                                  choices=['Synthtext', 'Totaltext', 'Ctw1500',
                                           'Icdar2015', "MLT2017", 'TD500'], help='Experiment name')
-        self.parser.add_argument("--gpu", default="1", help="set gpu id", type=str)
+        self.parser.add_argument("--gpu", default="0", help="set gpu id", type=str)
         self.parser.add_argument('--resume', default=None, type=str, help='Path to target resume checkpoint')
         self.parser.add_argument('--num_workers', default=8, type=int, help='Number of workers used in dataloading')
         self.parser.add_argument('--cuda', default=True, type=str2bool, help='Use cuda to train model')
@@ -39,7 +39,6 @@ class BaseOptions(object):
         self.parser.add_argument('--vis_dir', default='./vis/', help='Path to save visualization images')
         self.parser.add_argument('--log_dir', default='./logs/', help='Path to tensorboard log')
         self.parser.add_argument('--loss', default='CrossEntropyLoss', type=str, help='Training Loss')
-        # self.parser.add_argument('--input_channel', default=1, type=int, help='number of input channels' )
         self.parser.add_argument('--pretrain', default=False, type=str2bool, help='Pretrained AutoEncoder model')
         self.parser.add_argument('--viz', action='store_true', help='Whether to output debug info')
 
@@ -69,16 +68,19 @@ class BaseOptions(object):
         self.parser.add_argument('--means', type=int, default=(0.485, 0.456, 0.406), nargs='+', help='mean')
         self.parser.add_argument('--stds', type=int, default=(0.229, 0.224, 0.225), nargs='+', help='std')
         self.parser.add_argument('--input_size', default=640, type=int, help='model input size')
-        self.parser.add_argument('--test_size', default=(256, 1024), type=tuple, help='model input size')
+        self.parser.add_argument('--start_epoch', default=0, type=int, help='start epoch number')
 
         # eval args
-        self.parser.add_argument('--checkepoch', default=125, type=int, help='Load checkpoint number')
-        self.parser.add_argument('--start_epoch', default=0,type=int, help='start epoch number')
-        self.parser.add_argument('--threshold', default=0.305, type=float, help='start epoch number')
-        self.parser.add_argument('--score_i', default=0.8,type=float, help='filter the socre < score_i')
-        self.parser.add_argument('--min_area', default=150,type=int, help='filter the small text instance')
-        self.parser.add_argument('--voting', '-v', default=False, type=str2bool, help='Whether to output debug info')
-        # demo args
+        self.parser.add_argument('--checkepoch', default=370, type=int, help='Load checkpoint number')
+        self.parser.add_argument('--test_size', default=[960, 1920], type=int, nargs='+', help='test size')
+        self.parser.add_argument('--threshold', default=0.515, type=float, help='start epoch number')
+        self.parser.add_argument('--score_i', default=0.85, type=float, help='filter the socre < score_i')
+        self.parser.add_argument('--min_area', default=150, type=int, help='filter the small text instance')
+        self.parser.add_argument('--voting', '-v', default=True, type=str2bool, help='Whether choose voting')
+        self.parser.add_argument('--recover', default='watershed', type=str,
+                                 choices=['watershed', 'pse', ], help='Post processing algorithm')
+
+        # demo arg2
         self.parser.add_argument('--img_root', default=None, type=str, help='Path to deploy images')
 
     def parse(self, fixed=None):
