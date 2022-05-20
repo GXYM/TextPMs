@@ -1,9 +1,9 @@
 # TextPMs
+This is a Pytorch implementation of "Arbitrary Shape Text Detection via Segmentation with Probability Maps "  
+
+![](https://github.com/GXYM/TextPMs/blob/master/vis/framework.png)
 
 NOTE: This paper and project were completed in January 2020 and accepted by PAMI in May 2022. 
-
-## Abstract
-This is a Pytorch implementation of "Arbitrary Shape Text Detection via Segmentation with Probability Maps  "
 
 ## Prerequisites  
   python 3.7;  
@@ -36,20 +36,23 @@ NOTE: The images of each dataset can be obtained from their official website.
 
 ## Training 
 ### Prepar dataset
-We provide a simple example for each dataset in data, such as [Total-Text](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/data/Total-Text), [CTW-1500](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/data/CTW-1500), and [TD500](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/data/ArT) ...
+We provide a simple example for each dataset in data, such as [Total-Text](https://github.com/GXYM/TextPMs/tree/master/data/total-text-mat), [CTW-1500](https://github.com/GXYM/TextPMs/tree/master/data/ctw1500), and [MLT-2017](https://github.com/GXYM/TextPMs/tree/master/data/MLT2017) ...
 
 
 ### Pre-training models
-We provide some pre-tarining models on SynText [Baidu Drive](https://pan.baidu.com/s/1PsLrQWAVLDy0fSVp5HL9Ng) (download code: r1ff), [Google Drive](https://drive.google.com/file/d/1x64Lu_dMnQqs9gORQOMFL2wnXUzPWWGT/view?usp=sharing) and MLT-2017 [Baidu Drive](https://pan.baidu.com/s/19V9zqSMdgCHMvPTFngz8Fg) (download code: srym), [Google Drive](https://drive.google.com/file/d/1seVzFT657YzP-lc--yUqsVUek2mpw9tP/view?usp=sharing)
+We provide some pre-tarining models on SynText and MLT-2017 [Baidu Drive](https://pan.baidu.com/s/1qHer8pXKUuXGRzwPrkH-dw) (download code: 07pb), [Google Drive](https://drive.google.com/file/d/1yuEO5fWKZJ9Sc0SA-qyDYZLHRKBlIe8a/view?usp=sharing)
 
 
 ### Models
- *  [Total-Text model](https://drive.google.com/file/d/1wp2Vs8NRXYsTre1AoahwaF7G-Ze4wI-7/view?usp=sharing) (pretrained on ICDAR2017-MLT)
- *  [CTW-1500 model](https://drive.google.com/file/d/1wp2Vs8NRXYsTre1AoahwaF7G-Ze4wI-7/view?usp=sharing) (pretrained on ICDAR2017-MLT)
- *  [MSRA-TD500 model](https://drive.google.com/file/d/1wp2Vs8NRXYsTre1AoahwaF7G-Ze4wI-7/view?usp=sharing) (pretrained on ICDAR2017-MLT)  
+ *  Total-Text model: [Baidu Drive](https://pan.baidu.com/s/1z5u8jEoKX2OxDvfRbO-ijw) (download code: ce36), [Google Drive](https://drive.google.com/file/d/12DQcfXf8mtAnBfRR3Trw2D1DfyV72Fmt/view?usp=sharing)
+ *  CTW-1500 model: [Baidu Drive](https://pan.baidu.com/s/1o2Lwn5v6D4fhj_GiPEZ4yw) (download code: 7gov), [Google Drive](https://drive.google.com/file/d/1zT8EXrGpWIjegBZK8c4zM_x6MsmiA1q5/view?usp=sharing)
+ *  MSRA-TD500 model: [Baidu Drive](https://pan.baidu.com/s/1pBNWnPG4YicGj8kiHuTFDg) (download code: yocp), [Google Drive](https://drive.google.com/file/d/1xOdCQDj2hXTKcpFR0LdmbpFutTKEF-cb/view?usp=sharing)
+ *  ICDAR2017 model: [Baidu Drive](https://pan.baidu.com/s/1wOnoxRxt-bE0w9bvzQCnOw) (download code: eu1s), [Google Drive](https://drive.google.com/file/d/1JKVqjZAZs4mckhH7KiC7sNDqUw8Ib1Km/view?usp=sharing)
+ 
+ NOTE: The model of each benchmark is pre-trained on MLT-2017; the trained model of MLT-2017 in pre-training models，so there is no link separately here.
 
  ### Runing the training scripts
-We provide training scripts for each dataset in scripts-train, such as [Total-Text](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/scripts-train), [CTW-1500](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/scripts-train), and [ArT](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/scripts-train) ...
+We provide training scripts for each dataset in scripts-train, such as [Total-Text](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_Totaltxt.sh), [MLT-2017](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_MLT2017.sh), and [ArT](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/scripts-train) ...
 
 
 ## 4.Running Evaluation
@@ -103,7 +106,7 @@ Note that we provide some the protocols for benchmarks ([Total-Text](https://git
 
 
 ## Visualization
-![Visualization ](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png)
+![](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png](https://github.com/GXYM/TextPMs/blob/master/vis/img1.png)
 
 
 ## Citing the related works
@@ -112,8 +115,7 @@ Please cite the related works in your publications if it helps your research:
 
 ``` 
 @article{Zhang2022PMs,
-  title={Arbitrary Shape Text Detection via Segmentation
-with Probability Maps},
+  title={Arbitrary Shape Text Detection via Segmentation with Probability Maps},
   author={Shi-Xue Zhang and Xiaobin Zhu and Lei Chen and Jie-Bo Hou and Xu-Cheng Yin},
   journal={IEEE transactions on pattern analysis and machine intelligence},
   year={2022},
