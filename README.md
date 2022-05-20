@@ -10,7 +10,7 @@ NOTE: This paper and project were completed in January 2020 and accepted by PAMI
   PyTorch 1.2.0;   
   Numpy >=1.16;   
   CUDA >=10.2;  
-  GCC >=9.0;
+  GCC >=9.0;  
   *opencv-python < 4.5.0*     
   NVIDIA GPU(1080, 2080 or 3080);  
 
