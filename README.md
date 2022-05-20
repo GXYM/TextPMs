@@ -52,7 +52,7 @@ We provide some pre-tarining models on SynText and MLT-2017 [Baidu Drive](https:
  NOTE: The model of each benchmark is pre-trained on MLT-2017; the trained model of MLT-2017 in pre-training models，so there is no link separately here.
 
  ### Runing the training scripts
-We provide training scripts for each dataset in scripts-train, such as [Total-Text](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_Totaltxt.sh), [MLT-2017](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_MLT2017.sh), and [ArT](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/scripts-train) ...
+We provide training scripts for each dataset in scripts-train, such as [Total-Text](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_Totaltxt.sh), [MLT-2017](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_MLT2017.sh). We also provide pre-training script of [SynText](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_SynText.sh) ...
 
 
 ## 4.Running Evaluation
@@ -63,29 +63,21 @@ sh eval.sh
 The details in a are as follows:  
 ```
 #!/bin/bash
-
+###### test eval ############
 ##################### Total-Text ###################################
-# threshold=0.3, score_i=0.65; test_size=(256,1024)--util/option
-CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 --threshold 0.3 --score_i 0.65 --min_area 300 --voting false --gpu 0
+CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name Totaltext --checkepoch 250 --test_size 640 1024 --threshold 0.4 --score_i 0.7 --recover watershed --gpu 0 # --viz
 
-# threshold=0.325; test_size=(256,1024)
-#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Totaltext --checkepoch 550 --threshold 0.325 --min_area 300 --voting true --gpu 0
 
 ###################### CTW-1500 ####################################
-# threshold=0.3, score_i=0.65;test_size=(512,1024)--util/option
-#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Ctw1500 --checkepoch 480 --threshold 0.3 --score_i 0.65 --min_area 300 --voting false --gpu 0
-
-# threshold=0.365;test_size=(512,102I4)--util/option
-#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name Ctw1500 --checkepoch 480 --threshold 0.365 --min_area 300  --voting  true --gpu 0
+#CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name Ctw1500 --checkepoch 480 --test_size 512 1024 --threshold 0.4 --score_i 0.7 --recover watershed --gpu 0
 
 
 #################### MSRA-TD500 ######################################
-# threshold=0.305, score_i=0.8; test_size=(0,832)--util/option
-#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name TD500 --checkepoch 125 --threshold 0.305 --score_i 0.8 --min_area 150  --voting false --gpu 0
+#CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name TD500 --checkepoch 125 --test_size 0 832 --threshold 0.45 --score_i 0.835 --recover watershed --gpu 0
 
-# threshold=0.305; test_size=(0,832)--util/option
-#CUDA_LAUNCH_BLOCKING=1 python eval_pms.py --exp_name TD500 --checkepoch 125 --threshold 0.305 --min_area 150  --voting true --gpu 0
 
+#################### Icdar2015 ######################################
+#CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name Icdar2015 --checkepoch 370 --test_size 960 1920 --threshold 0.515 --score_i 0.85 --recover watershed --gpu 0
 ```  
 
 ### Demo
@@ -94,19 +86,19 @@ You can also run prediction on your own dataset without annotations. Here is an 
 ``` 
 #demo.sh
 #!/bin/bash
-CUDA_LAUNCH_BLOCKING=1 python3 demo.py --net resnet18 --scale 4 --exp_name TD500 --checkepoch 1135 --test_size 640 960 --dis_threshold 0.35 --cls_threshold 0.9 --gpu 0 --viz --img_root /path/to/image 
+CUDA_LAUNCH_BLOCKING=1 python3 demo.py --net resnet50 --exp_name Totaltext --checkepoch 250 --test_size 640 1024 --threshold 0.4 --score_i 0.7 --recover watershed --gpu 0 --img_root ./demo  --viz
 ```
 
 
 ### Evaluate the performance
 
-Note that we provide some the protocols for benchmarks ([Total-Text](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/dataset/total_text), [CTW-1500](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/dataset/ctw1500), [MSRA-TD500](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/dataset/TD500), [ICDAR2015](https://github.com/GXYM/TextBPN-Plus-Plus/tree/main/dataset/icdar15)). The embedded evaluation protocol in the code are obtatined from the official protocols. You don't need to run these protocols alone, because our test code will automatically call these scripts, please refer to "[util/eval.py](https://github.com/GXYM/TextBPN-Plus-Plus/blob/main/util/eval.py)"
+Note that we provide some the protocols for benchmarks ([Total-Text](https://github.com/GXYM/TextPMs/tree/master/dataset/total_text), [CTW-1500](https://github.com/GXYM/TextPMs/tree/master/dataset/ctw1500), [MSRA-TD500](https://github.com/GXYM/TextPMs/tree/master/dataset/TD500), [ICDAR2015](https://github.com/GXYM/TextPMs/tree/master/dataset/icdar15). The embedded evaluation protocol in the code are obtatined from the official protocols. You don't need to run these protocols alone, because our test code will automatically call these scripts, please refer to "[util/eval.py](https://github.com/GXYM/TextPMs/blob/master/util/eval.py)"
 
 
 
 
 ## Visualization
-![](https://github.com/GXYM/TextPMs/blob/master/visual/img1.png](https://github.com/GXYM/TextPMs/blob/master/vis/img1.png)
+![](https://github.com/GXYM/TextPMs/blob/master/vis/img1.png)
 
 
 ## Citing the related works
