@@ -80,6 +80,8 @@ CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name Totaltext --checkepoch
 #CUDA_LAUNCH_BLOCKING=1 python3 eval_TextPMs.py --exp_name Icdar2015 --checkepoch 370 --test_size 960 1920 --threshold 0.515 --score_i 0.85 --recover watershed --gpu 0
 ```  
 
+NOTE：If you want to save the visualization results, you need to open “--viz”.
+
 ### Demo
 You can also run prediction on your own dataset without annotations. Here is an example:
 
