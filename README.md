@@ -55,7 +55,7 @@ We provide some pre-tarining models on SynText and MLT-2017 [Baidu Drive](https:
 We provide training scripts for each dataset in scripts-train, such as [Total-Text](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_Totaltxt.sh), [MLT-2017](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_MLT2017.sh). We also provide pre-training script of [SynText](https://github.com/GXYM/TextPMs/blob/master/scripts-train/train_SynText.sh) ...
 
 
-## 4.Running Evaluation
+## Running Evaluation
 run:  
 ```
 sh eval.sh
