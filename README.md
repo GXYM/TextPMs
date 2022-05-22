@@ -12,7 +12,7 @@ NOTE: This paper and project were completed in January 2020 and accepted by PAMI
   CUDA >=10.2;  
   GCC >=9.0;  
   *opencv-python < 4.5.0*     
-  NVIDIA GPU(1080, 2080 or 3080);  
+  NVIDIA GPU(1080, 2080 or 3090);  
 
   NOTE: We tested the code in the environment of Arch Linux+Python3.7 with 1080, and  Arch Linux+Python3.9 with 2080. For other environments, the code may need to be adjusted slightly.
 
