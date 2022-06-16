@@ -3,7 +3,8 @@ This is a Pytorch implementation of "Arbitrary Shape Text Detection via Segmenta
 
 ![](https://github.com/GXYM/TextPMs/blob/master/vis/framework.png)
 
-NOTE: This paper and project were completed in January 2020 and accepted by PAMI in May 2022. 
+NOTE: This paper and project were completed in January 2020 and accepted by PAMI in May 2022.  
+NEWS: We updated the Google cloud links so that it can be downloaded without permission.
 
 ## Prerequisites  
   python 3.7;  
@@ -15,7 +16,6 @@ NOTE: This paper and project were completed in January 2020 and accepted by PAMI
   NVIDIA GPU(1080, 2080 or 3090);  
 
   NOTE: We tested the code in the environment of Arch Linux+Python3.7 with 1080, and  Arch Linux+Python3.9 with 2080. For other environments, the code may need to be adjusted slightly.  
-  NEWS:
 
 
 ## Makefile
