@@ -4,7 +4,11 @@ This is a Pytorch implementation of "Arbitrary Shape Text Detection via Segmenta
 ![](https://github.com/GXYM/TextPMs/blob/master/vis/framework.png)
 
 NOTE: This paper and project were completed in January 2020 and accepted by PAMI in May 2022.  
-NEWS: We updated the Google cloud links so that it can be downloaded without permission.
+
+
+## NEWS
+2022.06.24 0ur new work at [https://github.com/GXYM/TextBPN-Plus-Plus](https://github.com/GXYM/TextBPN-Plus-Plus).  
+2022.6.06 We updated the Google cloud links so that it can be downloaded without permission.
 
 ## Prerequisites  
   python 3.7;  
