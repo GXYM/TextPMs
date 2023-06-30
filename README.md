@@ -113,12 +113,23 @@ Note that we provide some the protocols for benchmarks ([Total-Text](https://git
 Please cite the related works in your publications if it helps your research:
 
 ``` 
-@article{Zhang2022PMs,
-  title={Arbitrary Shape Text Detection via Segmentation with Probability Maps},
-  author={Shi-Xue Zhang and Xiaobin Zhu and Lei Chen and Jie-Bo Hou and Xu-Cheng Yin},
-  journal={IEEE transactions on pattern analysis and machine intelligence},
-  year={2022},
-  volume={PP}
+@article{DBLP:journals/pami/ZhangZCHY23,
+  author       = {Shi{-}Xue Zhang and
+                  Xiaobin Zhu and
+                  Lei Chen and
+                  Jie{-}Bo Hou and
+                  Xu{-}Cheng Yin},
+  title        = {Arbitrary Shape Text Detection via Segmentation With Probability Maps},
+  journal      = {{IEEE} Trans. Pattern Anal. Mach. Intell.},
+  volume       = {45},
+  number       = {3},
+  pages        = {2736--2750},
+  year         = {2023},
+  url          = {https://doi.org/10.1109/TPAMI.2022.3176122},
+  doi          = {10.1109/TPAMI.2022.3176122},
+  timestamp    = {Sat, 25 Feb 2023 21:35:10 +0100},
+  biburl       = {https://dblp.org/rec/journals/pami/ZhangZCHY23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
   ``` 
 
